@@ -1,12 +1,12 @@
 <?php
 
-namespace Argparse;
+namespace Dnoegel\Phargparse;
 
-use Argparse\Argument\Argument;
-use Argparse\Argument\ArgumentFassade;
-use Argparse\Argument\ArgumentInterface;
-use Argparse\Handler\HandlerInterface;
-use Argparse\Result\Result;
+
+use Dnoegel\Phargparse\Argument\Argument;
+use Dnoegel\Phargparse\Argument\ArgumentFassade;
+use Dnoegel\Phargparse\Argument\ArgumentInterface;
+use Dnoegel\Phargparse\Handler\HandlerInterface;
 
 class Parser
 {
@@ -17,33 +17,19 @@ class Parser
      * @var HandlerInterface
      */
     protected $handler;
+    /**
+     * @var
+     */
+    private $name;
+    /**
+     * @var
+     */
+    private $description;
 
-    public function parse($args)
+    public function __construct($name = null, $description = null)
     {
-        $args = array_slice($args, 1);
-        $tokenizer = new Tokenizer($args);
-        $tokens = $tokenizer->run();
-
-        $populator = new ArgumentPopulator($this->arguments);
-        $resultArguments = $populator->populate($tokens);
-
-        $validator = new ArgumentValidator();
-        foreach ($this->arguments as $argument) {
-            $validator->validate($argument);
-        }
-
-        $result =  [];
-        foreach ($this->arguments as $argument) {
-            foreach ($argument->getNames() as $name) {
-                $result[$name] = $argument->getValue();
-            }
-        }
-        $result = new Result($result, $this->arguments);
-
-        $this->handler->handle($result);
-
-        return $result;
-
+        $this->name = $name;
+        $this->description = $description;
     }
 
     public function add(ArgumentInterface $argument)
@@ -74,5 +60,39 @@ class Parser
     {
         $this->handler = $handler;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return ArgumentInterface[]
+     */
+    public function getArguments()
+    {
+        return $this->arguments;
+    }
+
+    /**
+     * @return HandlerInterface
+     */
+    public function getHandler()
+    {
+        return $this->handler;
+    }
+
+
 
 }

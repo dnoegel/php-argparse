@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse;
+namespace Dnoegel\Phargparse;
 
 
 /**

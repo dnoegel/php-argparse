@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\ValueHandler;
+namespace Dnoegel\Phargparse\ValueHandler;
 
 /**
  * Interface ValueHandler is the generic definition of an value handler. A value handler will handle all

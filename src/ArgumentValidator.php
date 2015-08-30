@@ -1,8 +1,8 @@
 <?php
 
-namespace Argparse;
+namespace Dnoegel\Phargparse;
 
-use Argparse\Argument\ArgumentInterface;
+use Dnoegel\Phargparse\Argument\ArgumentInterface;
 
 /**
  * Class ArgumentValidator enforces, that all arguments with constraints (e.g. required, consume) are valid

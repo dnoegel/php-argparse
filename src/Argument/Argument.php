@@ -1,9 +1,9 @@
 <?php
 
-namespace Argparse\Argument;
+namespace Dnoegel\Phargparse\Argument;
 
-use Argparse\ValueHandler\ConstantValueHandler;
-use Argparse\ValueHandler\ValueHandler;
+use Dnoegel\Phargparse\ValueHandler\ConstantValueHandler;
+use Dnoegel\Phargparse\ValueHandler\ValueHandler;
 
 class Argument implements ArgumentInterface
 {

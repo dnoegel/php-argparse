@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\Argument;
+namespace Dnoegel\Phargparse\Argument;
 
 interface ArgumentInterface
 {

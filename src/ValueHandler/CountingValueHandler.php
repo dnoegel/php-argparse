@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\ValueHandler;
+namespace Dnoegel\Phargparse\ValueHandler;
 
 /**
  * Class CountingValueHandler will count any occurrence of a given value. Useful for e.g. verbosity flags,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\ValueHandler;
+namespace Dnoegel\Phargparse\ValueHandler;
 
 /**
  * Class StoreValueHandler will store a single given value. Typical example might be "--username", where

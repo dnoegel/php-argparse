@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\ValueHandler;
+namespace Dnoegel\Phargparse\ValueHandler;
 
 /**
  * Class MultiValueHandler store a collection of values, e.g. a list of file names.

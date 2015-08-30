@@ -1,10 +1,10 @@
 <?php
 
-namespace Argparse\Argument;
+namespace Dnoegel\Phargparse\Argument;
 
-use Argparse\ValueHandler\CallbackValueHandler;
-use Argparse\ValueHandler\ConstantValueHandler;
-use Argparse\ValueHandler\ValueHandler;
+use Dnoegel\Phargparse\ValueHandler\CallbackValueHandler;
+use Dnoegel\Phargparse\ValueHandler\ConstantValueHandler;
+use Dnoegel\Phargparse\ValueHandler\ValueHandler;
 
 class ArgumentFassade implements ArgumentInterface
 {

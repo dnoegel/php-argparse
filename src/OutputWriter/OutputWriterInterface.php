@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\OutputWriter;
+namespace Dnoegel\Phargparse\OutputWriter;
 
 /**
  * Interface OutputWriterInterface describes an output interface (like stdout)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\OutputWriter;
+namespace Dnoegel\Phargparse\OutputWriter;
 
 /**
  * Class InMemoryOutputWriter stores all output in memory, which might be useful for e.g. unit testing

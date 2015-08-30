@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\ValueHandler;
+namespace Dnoegel\Phargparse\ValueHandler;
 
 /**
  * Class ConstantValueHandler will store a constant value, which is useful for true/false flags

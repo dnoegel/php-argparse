@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse\OutputWriter;
+namespace Dnoegel\Phargparse\OutputWriter;
 
 /**
  * Class SimpleOutputWriterInterface will just print any output for stdout.

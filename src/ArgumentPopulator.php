@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse;
+namespace Dnoegel\Phargparse;
 
 /**
  * Class ArgumentPopulator will iterate the tokens and populate the arguments corresponding to their configuration.

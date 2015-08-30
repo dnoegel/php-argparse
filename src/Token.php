@@ -1,6 +1,6 @@
 <?php
 
-namespace Argparse;
+namespace Dnoegel\Phargparse;
 
 /**
  * Class Token represents a single token of the commandline arguments passed to the script. E.g.
