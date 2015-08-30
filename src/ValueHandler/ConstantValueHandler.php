@@ -2,6 +2,10 @@
 
 namespace Argparse\ValueHandler;
 
+/**
+ * Class ConstantValueHandler will store a constant value, which is useful for true/false flags
+ * @package Argparse\ValueHandler
+ */
 class ConstantValueHandler implements ValueHandler
 {
     /**
@@ -11,7 +15,6 @@ class ConstantValueHandler implements ValueHandler
 
     public function __construct($constant)
     {
-
         $this->constant = $constant;
     }
 

@@ -2,6 +2,12 @@
 
 namespace Argparse\ValueHandler;
 
+/**
+ * Class StoreValueHandler will store a single given value. Typical example might be "--username", where
+ * the actual username is then stored.
+ *
+ * @package Argparse\ValueHandler
+ */
 class StoreValueHandler implements ValueHandler
 {
     protected $value;

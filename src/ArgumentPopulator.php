@@ -26,7 +26,7 @@ class ArgumentPopulator
                 array_shift($tokens);
             }
 
-            // referencce first token
+            // reference first token
             $token = $tokens[0];
 
             // try to get an argument from the token

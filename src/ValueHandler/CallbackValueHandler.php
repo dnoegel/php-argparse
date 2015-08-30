@@ -2,6 +2,11 @@
 
 namespace Argparse\ValueHandler;
 
+/**
+ * Class CallbackValueHandler will allow the user to handle the values quickly with an anonymous function
+ *
+ * @package Argparse\ValueHandler
+ */
 class CallbackValueHandler implements ValueHandler
 {
     /**

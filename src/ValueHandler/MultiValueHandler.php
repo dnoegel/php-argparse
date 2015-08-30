@@ -2,6 +2,11 @@
 
 namespace Argparse\ValueHandler;
 
+/**
+ * Class MultiValueHandler store a collection of values, e.g. a list of file names.
+ *
+ * @package Argparse\ValueHandler
+ */
 class MultiValueHandler implements ValueHandler
 {
     private $values = [];

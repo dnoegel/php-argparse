@@ -2,6 +2,10 @@
 
 namespace Argparse\OutputWriter;
 
+/**
+ * Class InMemoryOutputWriter stores all output in memory, which might be useful for e.g. unit testing
+ * @package Argparse\OutputWriter
+ */
 class InMemoryOutputWriter implements OutputWriterInterface
 {
     protected $memory;

@@ -5,11 +5,18 @@ namespace Argparse;
 use Argparse\Argument\Argument;
 use Argparse\Argument\ArgumentFassade;
 use Argparse\Argument\ArgumentInterface;
+use Argparse\Handler\HandlerInterface;
+use Argparse\Result\Result;
 
 class Parser
 {
+    /** @var ArgumentInterface[] */
     protected $arguments = [];
 
+    /**
+     * @var HandlerInterface
+     */
+    protected $handler;
 
     public function parse($args)
     {
@@ -31,6 +38,9 @@ class Parser
                 $result[$name] = $argument->getValue();
             }
         }
+        $result = new Result($result, $this->arguments);
+
+        $this->handler->handle($result);
 
         return $result;
 
@@ -50,7 +60,19 @@ class Parser
      */
     public function addArgument(...$names)
     {
-        return $this->add(new ArgumentFassade(new Argument(...$names)));
+        // create and add the argument
+        $argument = new Argument(...$names);
+        $this->add($argument);
+
+        // wrap thee argument into a fassade, that will make handling the argument easier
+        $facade = new ArgumentFassade($argument);
+
+        return $facade;
+    }
+
+    public function setHandler(HandlerInterface $handler)
+    {
+        $this->handler = $handler;
     }
 
 }

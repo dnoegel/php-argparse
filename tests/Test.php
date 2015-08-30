@@ -2,6 +2,7 @@
 
 use Argparse\Argument\OptionalArgument;
 use Argparse\Argument\PositionalArgument;
+use Argparse\Result\Result;
 use Argparse\ValueHandler\ConstantValueHandler;
 use Argparse\ValueHandler\MultiValueHandler;
 use Argparse\ValueHandler\StoreValueHandler;
@@ -10,6 +11,20 @@ class Test extends PHPUnit_Framework_TestCase
 {
     public function test()
     {
+        $expect = [
+            '-v' => 3,
+            '--verbose' => 3,
+            '-n' => 1,
+            '--colors' => true,
+            '--filter' => 'hallo welt"',
+            '--anotherFilter' => 'test',
+            '--randomParam' => [],
+            'files' => [
+                'foo', 'bar', 'baz'
+            ]
+
+        ];
+
         $parser = new \Argparse\Parser();
 
         $parser->addArgument('-v', '--verbose')->setValueHandler(new \Argparse\ValueHandler\CountingValueHandler());
@@ -19,32 +34,45 @@ class Test extends PHPUnit_Framework_TestCase
         $parser->addArgument('--anotherFilter')->setValueHandler(new StoreValueHandler())->setConsume(1);
         $parser->addArgument('--randomParam')->setValueHandler(new MultiValueHandler())->setConsume(1);
         $parser->addArgument('files')->setValueHandler(new MultiValueHandler())->setConsume(3);
+        $parser->setHandler(new TestHandler($this, $expect));
+
 
         $result = $parser->parse([
             '/usr/bin/tst', '--colors', '-vvn1',
             '-v', '--filter', 'hallo welt"',
             '--anotherFilter=test',
-            'make', 'it', 'work'
+            'foo', 'bar', 'baz'
         ]);
 
+        foreach ($expect as $key => $value) {
+            $this->assertEquals($value, $result->get($key));
+        }
 
-        $expect = [
-            'colors' => true,
-            'v' => 3,
-            'n' => 1,
-            'filter' => 'hallo welt"',
-            'anotherFilter' => 'test',
-            'files' => [
-                'make', 'it', 'work'
-            ]
-        ];
     }
-    public function testSplit()
+}
+
+class TestHandler implements Argparse\Handler\HandlerInterface
+{
+    /**
+     * @var PHPUnit_Framework_TestCase
+     */
+    private $testCase;
+    /**
+     * @var
+     */
+    private $expect;
+
+    public function __construct(PHPUnit_Framework_TestCase $testCase, $expect) {
+
+        $this->testCase = $testCase;
+        $this->expect = $expect;
+    }
+
+    public function handle(Result $result)
     {
-        $string = '/usr/bin/tst --colors --vvn1 -v --filter \'hallo welt"\' --anotherFilter=test make it work';
-
-        $p = new \Argparse\StringSplitter();
-        $result = $p->split($string);
-
+        foreach ($this->expect as $key => $value) {
+            $this->testCase->assertEquals($value, $result->get($key));
+        }
     }
+
 }

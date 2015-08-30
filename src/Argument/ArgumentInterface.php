@@ -7,6 +7,7 @@ interface ArgumentInterface
     public function setNames(...$names);
     public function setValue($value);
 
+
     public function getNames();
     public function getConsume();
     public function isPositional();
