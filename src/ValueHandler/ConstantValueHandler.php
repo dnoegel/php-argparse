@@ -8,9 +8,10 @@ namespace Dnoegel\Phargparse\ValueHandler;
  */
 class ConstantValueHandler implements ValueHandler
 {
-    /**
-     * @var
-     */
+    /** @var  mixed */
+    private $value = null;
+
+    /** @var  mixed */
     private $constant;
 
     public function __construct($constant)
@@ -20,13 +21,11 @@ class ConstantValueHandler implements ValueHandler
 
     public function handle($value)
     {
-        return $this->constant;
+        return $this->value = $this->constant;
     }
 
     public function getValue()
     {
-        return $this->constant;
+        return $this->value;
     }
-
-
 }

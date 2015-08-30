@@ -6,7 +6,7 @@ Writing PHP script for the commandline is easy - but usually it will fall short 
 handling. `getopt` only provides rudimentary handling of arguments, the
 [symfony console tools](http://symfony.com/doc/current/components/console/introduction.html)
 are very powerful but are way more then just "argument handling" and make quite some assumptions
-of how your code should look.
+of how your code should look. (more solutions: see below)
 
 Phargparse is inspired by [python's argparse](https://docs.python.org/3/library/argparse.html)
 and is intended to:
@@ -56,6 +56,7 @@ $parser->addArgument('files')->setValueHandler(new MultiValueHandler())->setCons
 $parser->setHandler(new MyCustomHandler());
 
 // if we don't want to use handlers, we can also just use the `Result` object of the `parse` method
+// the array with params is basically, what PHP's "args" will give you
 $result = $parser->parse([
     '/usr/bin/tst', '--colors', '-vvn1',
     '-v', '--filter', 'hallo welt"',
@@ -80,3 +81,13 @@ The result will look like this:
     ]
 ]
  ```
+
+ # Other solutions
+
+* [getopt()](http://php.net/manual/de/function.getopt.php)
+* [Commando](https://github.com/nategood/commando)
+* [ConsoleKit](https://github.com/maximebf/ConsoleKit)
+* [PHP Commandline tools](https://github.com/wp-cli/php-cli-tools)
+* [GetOptionKit](https://github.com/c9s/GetOptionKit)
+* [CLIFramework](https://github.com/c9s/CLIFramework)
+* [Symfony console tools](http://symfony.com/doc/current/components/console/introduction.html)
