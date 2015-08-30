@@ -35,7 +35,7 @@ and is intended to:
 
 # How to use it?
 
-```
+```php
 $parser = new \Dnoegel\Phargparse\Argparse();
 
 // each -v or --value will increase the verbosityy count
@@ -67,7 +67,7 @@ $result = $parser->parse([
 
 The result will look like this:
 
-```
+```php
 [
     '-v' => 3,
     '--verbose' => 3,
@@ -82,7 +82,7 @@ The result will look like this:
 ]
  ```
 
- # Other solutions
+# Other solutions
 
 * [getopt()](http://php.net/manual/de/function.getopt.php)
 * [Commando](https://github.com/nategood/commando)
