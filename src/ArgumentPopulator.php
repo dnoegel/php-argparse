@@ -2,6 +2,11 @@
 
 namespace Argparse;
 
+/**
+ * Class ArgumentPopulator will iterate the tokens and populate the arguments corresponding to their configuration.
+ *
+ * @package Argparse
+ */
 class ArgumentPopulator
 {
     /** @var  $arguments Argument\ArgumentInterface[] */

@@ -4,6 +4,10 @@ namespace Argparse;
 
 use Argparse\Argument\ArgumentInterface;
 
+/**
+ * Class ArgumentValidator enforces, that all arguments with constraints (e.g. required, consume) are valid
+ * @package Argparse
+ */
 class ArgumentValidator
 {
     public function validate(ArgumentInterface $argument)

@@ -2,6 +2,12 @@
 
 namespace Argparse;
 
+/**
+ * Class Token represents a single token of the commandline arguments passed to the script. E.g.
+ * "-f", "--filter" or "/home/user/test.zip"
+ *
+ * @package Argparse
+ */
 class Token
 {
     const TOKEN_VALUE = 'value';
