@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnoegel\Phargparse\ValueHandler;
+namespace Dnoegel\PhpArgParse\ValueHandler;
 
 /**
  * Class MultiValueHandler store a collection of values, e.g. a list of file names.
@@ -14,11 +14,10 @@ class MultiValueHandler implements ValueHandler
     public function handle($value)
     {
         $this->values[] = $value;
-   }
+    }
 
     public function getValue()
     {
         return $this->values;
     }
-
 }

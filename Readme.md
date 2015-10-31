@@ -1,5 +1,5 @@
-# PHP Argument Parser - Phargparse
-Phargparse is a simple WORK IN PROGRESS argument parser for PHP.
+# PHP Argument Parser
+PhpArgParse is a simple WORK IN PROGRESS argument parser for PHP.
 
 # Usecase / intention
 Writing PHP script for the commandline is easy - but usually it will fall short in argument
@@ -8,7 +8,7 @@ handling. `getopt` only provides rudimentary handling of arguments, the
 are very powerful but are way more then just "argument handling" and make quite some assumptions
 of how your code should look. (more solutions: see below)
 
-Phargparse is inspired by [python's argparse](https://docs.python.org/3/library/argparse.html)
+PhpArgParse is inspired by [python's argparse](https://docs.python.org/3/library/argparse.html)
 and is intended to:
 
  * allow simple definition of arguments
@@ -36,9 +36,9 @@ and is intended to:
 # How to use it?
 
 ```php
-$parser = new \Dnoegel\Phargparse\Argparse();
+$parser = new \Dnoegel\PhpArgParse\Argparse();
 
-// each -v or --value will increase the verbosityy count
+// each -v or --value will increase the verbosity count
 $parser->addArgument('-v', '--verbose')->setValueHandler(new CountingValueHandler());
 // consume one value and store it
 $parser->addArgument('-n')->setConsume(1)->setValueHandler(new StoreValueHandler());

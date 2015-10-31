@@ -1,14 +1,17 @@
 <?php
 
-namespace Dnoegel\Phargparse;
+namespace Dnoegel\PhpArgParse;
 
+use Dnoegel\PhpArgParse\Argument\Argument;
+use Dnoegel\PhpArgParse\Argument\ArgumentFassade;
+use Dnoegel\PhpArgParse\Argument\ArgumentInterface;
+use Dnoegel\PhpArgParse\Handler\HandlerInterface;
 
-use Dnoegel\Phargparse\Argument\Argument;
-use Dnoegel\Phargparse\Argument\ArgumentFassade;
-use Dnoegel\Phargparse\Argument\ArgumentInterface;
-use Dnoegel\Phargparse\Handler\HandlerInterface;
-
-class Parser
+/**
+ * Class ArgumentCollection represents a set of arguments belonging to a certain (sub) parser
+ * @package Dnoegel\PhpArgParse
+ */
+class ArgumentCollection
 {
     /** @var ArgumentInterface[] */
     protected $arguments = [];
@@ -92,7 +95,4 @@ class Parser
     {
         return $this->handler;
     }
-
-
-
 }

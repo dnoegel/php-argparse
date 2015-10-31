@@ -1,18 +1,17 @@
 <?php
 
-namespace Dnoegel\Phargparse;
+namespace Dnoegel\PhpArgParse;
 
-use Dnoegel\Phargparse\Result\Result;
+use Dnoegel\PhpArgParse\Result\Result;
 
-class Argparse extends Parser
+class Argparse extends ArgumentCollection
 {
-
-    /** @var Parser[] */
+    /** @var ArgumentCollection[] */
     protected $subParser = [];
 
     public function addSubParser($name)
     {
-        return $this->subParser[$name] = new Parser($name);
+        return $this->subParser[$name] = new ArgumentCollection($name);
     }
 
     public function parse($args)
@@ -47,12 +46,13 @@ class Argparse extends Parser
         }
 
         return $result;
-
     }
 
     /**
+     * Return the parser in charge for the current request
+     *
      * @param $args
-     * @return Parser
+     * @return ArgumentCollection
      */
     private function getSubParserByArgs($args)
     {
@@ -60,7 +60,7 @@ class Argparse extends Parser
         $resultingSubParser = null;
         foreach ($this->subParser as $name => $subParser) {
             if (stripos($argString, $name) === 0) {
-                if (!$resultingSubParser || (strlen($resultingSubParser->getName()) < strlen($name) )) {
+                if (!$resultingSubParser || (strlen($resultingSubParser->getName()) < strlen($name))) {
                     $resultingSubParser = $subParser;
                 }
             }
@@ -68,5 +68,4 @@ class Argparse extends Parser
 
         return $resultingSubParser ?: $this;
     }
-
 }

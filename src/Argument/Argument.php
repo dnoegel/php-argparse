@@ -1,9 +1,9 @@
 <?php
 
-namespace Dnoegel\Phargparse\Argument;
+namespace Dnoegel\PhpArgParse\Argument;
 
-use Dnoegel\Phargparse\ValueHandler\ConstantValueHandler;
-use Dnoegel\Phargparse\ValueHandler\ValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\ConstantValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\ValueHandler;
 
 class Argument implements ArgumentInterface
 {
@@ -13,6 +13,9 @@ class Argument implements ArgumentInterface
     private $valueHandler;
     private $default;
     protected $consume;
+    /** @var \Closure|Null  */
+    private $validator = null;
+    private $description;
 
     public function __construct(...$names)
     {
@@ -106,5 +109,37 @@ class Argument implements ArgumentInterface
     {
         return (strpos($this->getNames()[0], '-') === false);
     }
+
+    public function setValidator(\Closure $callable)
+    {
+        $this->validator = $callable;
+    }
+
+    public function validate(ArgumentInterface $argument)
+    {
+        if (!$this->validator) {
+            return true;
+        }
+
+        $validator = $this->validator;
+
+        return $validator($argument);
+    }
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
 
 }

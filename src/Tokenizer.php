@@ -1,9 +1,9 @@
 <?php
 
-namespace Dnoegel\Phargparse;
+namespace Dnoegel\PhpArgParse;
 
-use Dnoegel\Phargparse\Argument\Argument;
-use Dnoegel\Phargparse\Argument\ArgumentInterface;
+use Dnoegel\PhpArgParse\Argument\Argument;
+use Dnoegel\PhpArgParse\Argument\ArgumentInterface;
 
 /**
  * Class Tokenizer takes an $args array and split it into smaller tokens, so we have a more shell-like
@@ -14,7 +14,6 @@ use Dnoegel\Phargparse\Argument\ArgumentInterface;
  */
 class Tokenizer
 {
-
     /** @var  Argument[] */
     private $args;
 

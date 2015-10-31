@@ -1,12 +1,12 @@
 <?php
 
-namespace Dnoegel\Phargparse\OutputWriter;
+namespace Dnoegel\PhpArgParse\OutputWriter;
 
 /**
  * Class SimpleOutputWriterInterface will just print any output for stdout.
  * @package Argparse\OutputWriter
  */
-class SimpleOutputWriterInterface implements OutputWriterInterface
+class SimpleOutputWriter implements OutputWriterInterface
 {
     public function write($content)
     {
@@ -17,5 +17,4 @@ class SimpleOutputWriterInterface implements OutputWriterInterface
     {
         echo $content . "\n";
     }
-
 }

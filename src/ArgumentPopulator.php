@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnoegel\Phargparse;
+namespace Dnoegel\PhpArgParse;
 
 /**
  * Class ArgumentPopulator will iterate the tokens and populate the arguments corresponding to their configuration.
@@ -68,11 +68,9 @@ class ArgumentPopulator
                 }
             }
             $resultArguments[] = $argument;
-
         }
 
         return $resultArguments;
-
     }
 
     /**
@@ -93,7 +91,6 @@ class ArgumentPopulator
         /** @var Token[] $tokens */
 
         for ($i = 0; $i < $number; $i++) {
-
             $parts = [];
             while ($tokens && $token = array_shift($tokens)) {
                 if ($token->type == Token::TOKEN_NEW_WORD) {
@@ -119,8 +116,6 @@ class ArgumentPopulator
         }
 
         return $words;
-
-
     }
 
     /**
@@ -153,7 +148,6 @@ class ArgumentPopulator
                 continue;
             }
             return $argument;
-
         }
         return false;
     }

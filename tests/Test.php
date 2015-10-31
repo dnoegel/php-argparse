@@ -1,16 +1,48 @@
 <?php
 
-use Dnoegel\Phargparse\Result;
-use Dnoegel\Phargparse\ValueHandler\ConstantValueHandler;
-use Dnoegel\Phargparse\ValueHandler\CountingValueHandler;
-use Dnoegel\Phargparse\ValueHandler\MultiValueHandler;
-use Dnoegel\Phargparse\ValueHandler\StoreValueHandler;
+use Dnoegel\PhpArgParse\Argument\ArgumentInterface;
+use Dnoegel\PhpArgParse\Result;
+use Dnoegel\PhpArgParse\ValueHandler\ConstantValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\CountingValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\MultiValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\StoreValueHandler;
 
 class Test extends PHPUnit_Framework_TestCase
 {
+    public function testValidator()
+    {
+        $parser = new \Dnoegel\PhpArgParse\Argparse();
+        $parser->addArgument('--name')
+            ->setValueHandler(new StoreValueHandler())
+            ->setConsume(1)
+            ->setRequired(true)
+            ->setValidator(function (ArgumentInterface $argument) {
+                if ($argument->getValue() != "Daniel") {
+                    throw new \RuntimeException("Not a valid name");
+                }
+                return true;
+            });
+
+        // Check a valid result
+        $result = $parser->parse([
+            '/usr/bin/tst', '--name', 'Daniel',
+        ]);
+        $this->assertInstanceOf(Result\Result::class, $result);
+
+        // Check invalid result
+        $result = null;
+        try {
+            $parser->parse([
+                '/usr/bin/tst', '--name', 'John Smith',
+            ]);
+        } catch (Exception $e) {
+        }
+        $this->assertEmpty($result);
+    }
+
     public function testSubParser()
     {
-        $parser = new \Dnoegel\Phargparse\Argparse();
+        $parser = new \Dnoegel\PhpArgParse\Argparse();
         $parser->addArgument('-v')->setValueHandler(new CountingValueHandler());
 
         $result = $parser->parse([
@@ -43,7 +75,7 @@ class Test extends PHPUnit_Framework_TestCase
 
         ];
 
-        $parser = new \Dnoegel\Phargparse\Argparse();
+        $parser = new \Dnoegel\PhpArgParse\Argparse();
 
         $parser->addArgument('-v', '--verbose')->setValueHandler(new CountingValueHandler());
         $parser->addArgument('-n')->setConsume(1)->setValueHandler(new StoreValueHandler());
@@ -65,11 +97,10 @@ class Test extends PHPUnit_Framework_TestCase
         foreach ($expect as $key => $value) {
             $this->assertEquals($value, $result->get($key));
         }
-
     }
 }
 
-class TestHandler implements Dnoegel\Phargparse\Handler\HandlerInterface
+class TestHandler implements Dnoegel\PhpArgParse\Handler\HandlerInterface
 {
     /**
      * @var PHPUnit_Framework_TestCase
@@ -80,8 +111,8 @@ class TestHandler implements Dnoegel\Phargparse\Handler\HandlerInterface
      */
     private $expect;
 
-    public function __construct(PHPUnit_Framework_TestCase $testCase, $expect) {
-
+    public function __construct(PHPUnit_Framework_TestCase $testCase, $expect)
+    {
         $this->testCase = $testCase;
         $this->expect = $expect;
     }
@@ -92,5 +123,4 @@ class TestHandler implements Dnoegel\Phargparse\Handler\HandlerInterface
             $this->testCase->assertEquals($value, $result->get($key));
         }
     }
-
 }

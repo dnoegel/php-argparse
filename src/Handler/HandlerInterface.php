@@ -1,8 +1,8 @@
 <?php
 
-namespace Dnoegel\Phargparse\Handler;
+namespace Dnoegel\PhpArgParse\Handler;
 
-use Dnoegel\Phargparse\Result\Result;
+use Dnoegel\PhpArgParse\Result\Result;
 
 /**
  * Interface HandlerInterface handles the result of a (sub) parser. This can be used, to handle

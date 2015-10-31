@@ -1,8 +1,8 @@
 <?php
 
-namespace Dnoegel\Phargparse\Result;
+namespace Dnoegel\PhpArgParse\Result;
 
-use Dnoegel\Phargparse\Argument\ArgumentInterface;
+use Dnoegel\PhpArgParse\Argument\ArgumentInterface;
 
 class Result
 {

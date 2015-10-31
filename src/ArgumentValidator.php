@@ -1,8 +1,8 @@
 <?php
 
-namespace Dnoegel\Phargparse;
+namespace Dnoegel\PhpArgParse;
 
-use Dnoegel\Phargparse\Argument\ArgumentInterface;
+use Dnoegel\PhpArgParse\Argument\ArgumentInterface;
 
 /**
  * Class ArgumentValidator enforces, that all arguments with constraints (e.g. required, consume) are valid
@@ -20,6 +20,10 @@ class ArgumentValidator
 
         if ($argument->isRequired() && !$argument->getConsume() && $value) {
             return true;
+        }
+
+        if (!$argument->validate($argument)) {
+            throw new \RuntimeException("Argument {$argument->getNames()[0]} invalid");
         }
 
         if ($argument->isRequired() && count($value) !== $argument->getConsume()) {

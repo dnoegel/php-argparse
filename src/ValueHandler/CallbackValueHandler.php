@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnoegel\Phargparse\ValueHandler;
+namespace Dnoegel\PhpArgParse\ValueHandler;
 
 /**
  * Class CallbackValueHandler will allow the user to handle the values quickly with an anonymous function

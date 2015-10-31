@@ -1,7 +1,6 @@
 <?php
 
-namespace Dnoegel\Phargparse;
-
+namespace Dnoegel\PhpArgParse;
 
 /**
  * Class StringSplitter splits a given string in a shell like manner, as e.g. $argv does
@@ -17,10 +16,10 @@ class StringSplitter
         preg_match_all('#(?<!\\\\)("|\')(?<escaped>(?:[^\\\\]|\\\\.)*?)\1|(?<unescaped>\S+)#s', $commandLineString, $matches, PREG_SET_ORDER);
 
         $results = array();
-        foreach($matches as $array){
-            if(!empty($array['escaped'])){
+        foreach ($matches as $array) {
+            if (!empty($array['escaped'])) {
                 $results[] = $array['escaped'];
-            }else{
+            } else {
                 $results[] = $array['unescaped'];
             }
         }

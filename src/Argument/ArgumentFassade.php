@@ -1,14 +1,13 @@
 <?php
 
-namespace Dnoegel\Phargparse\Argument;
+namespace Dnoegel\PhpArgParse\Argument;
 
-use Dnoegel\Phargparse\ValueHandler\CallbackValueHandler;
-use Dnoegel\Phargparse\ValueHandler\ConstantValueHandler;
-use Dnoegel\Phargparse\ValueHandler\ValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\CallbackValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\ConstantValueHandler;
+use Dnoegel\PhpArgParse\ValueHandler\ValueHandler;
 
 class ArgumentFassade implements ArgumentInterface
 {
-
     /**
      * @var Argument
      */
@@ -86,6 +85,32 @@ class ArgumentFassade implements ArgumentInterface
     public function isRequired()
     {
         return $this->argument->isRequired();
+    }
+
+    public function setValidator(\Closure $callable)
+    {
+        $this->argument->setValidator($callable);
+    }
+
+    public function validate(ArgumentInterface $argument)
+    {
+        return $this->argument->validate($argument);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->argument->getDescription();
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->argument->setDescription($description);
     }
 
 }

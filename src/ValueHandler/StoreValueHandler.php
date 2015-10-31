@@ -1,6 +1,6 @@
 <?php
 
-namespace Dnoegel\Phargparse\ValueHandler;
+namespace Dnoegel\PhpArgParse\ValueHandler;
 
 /**
  * Class StoreValueHandler will store a single given value. Typical example might be "--username", where
@@ -21,5 +21,4 @@ class StoreValueHandler implements ValueHandler
     {
         return $this->value;
     }
-
 }
