@@ -105,12 +105,9 @@ class ArgumentFassade implements ArgumentInterface
         return $this->argument->getDescription();
     }
 
-    /**
-     * @param mixed $description
-     */
     public function setDescription($description)
     {
         $this->argument->setDescription($description);
+        return $this;
     }
-
 }

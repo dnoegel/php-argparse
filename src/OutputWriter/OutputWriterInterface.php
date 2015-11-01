@@ -3,7 +3,7 @@
 namespace Dnoegel\PhpArgParse\OutputWriter;
 
 /**
- * Interface OutputWriterInterface describes an output interface (like stdout)
+ * Interface OutputWriterInterface describes an output (like stdout)
  * @package Argparse\OutputWriter
  */
 interface OutputWriterInterface

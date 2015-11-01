@@ -23,15 +23,15 @@ class ArgumentValidator
         }
 
         if (!$argument->validate($argument)) {
-            throw new \RuntimeException("Argument {$argument->getNames()[0]} invalid");
+            throw new \RuntimeException("Argument '{$argument->getNames()[0]}' invalid");
         }
 
         if ($argument->isRequired() && count($value) !== $argument->getConsume()) {
-            throw new \RuntimeException("{$argument->getNames()[0]} required parameters not satisfied");
+            throw new \RuntimeException("Required parameters not satisfied: '{$argument->getNames()[0]}'");
         }
 
         if ($value && $argument->getConsume() &&count($value) !== $argument->getConsume()) {
-            throw new \RuntimeException("{$argument->getNames()[0]} parameters not satisfied");
+            throw new \RuntimeException("Parameters not satisfied: {$argument->getNames()[0]}");
         }
     }
 }

@@ -8,7 +8,7 @@ use Dnoegel\PhpArgParse\ValueHandler\ValueHandler;
 class Argument implements ArgumentInterface
 {
     private $names;
-    private $required;
+    private $required = false;
     /** @var  ValueHandler */
     private $valueHandler;
     private $default;
@@ -92,11 +92,13 @@ class Argument implements ArgumentInterface
     public function setConsume($consume)
     {
         $this->consume = $consume;
+        return $this;
     }
 
     public function setValue($value)
     {
         $this->valueHandler->handle($value);
+        return $this;
     }
 
 
@@ -113,6 +115,7 @@ class Argument implements ArgumentInterface
     public function setValidator(\Closure $callable)
     {
         $this->validator = $callable;
+        return $this;
     }
 
     public function validate(ArgumentInterface $argument)
@@ -133,13 +136,9 @@ class Argument implements ArgumentInterface
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     */
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
     }
-
-
 }

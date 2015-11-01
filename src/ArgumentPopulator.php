@@ -42,7 +42,7 @@ class ArgumentPopulator
                 $argument = $this->getArgumentByPosition($position);
 
                 if (!$argument) {
-                    throw new \RuntimeException("Could not associate $token->value");
+                    throw new \RuntimeException("Unknown option '$token->value'");
                 }
                 $position++;
             }
